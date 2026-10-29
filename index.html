@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alphabet（GOOGL）2026Q3 财报深度分析 — 业务·订单·风险·估值·暴跌归因</title>
+<style>
+  :root{
+    --navy:#16243f; --navy2:#1f3357; --gold:#c9a227; --gold-soft:#e7d9a8;
+    --ink:#1d2733; --muted:#5b6776; --line:#e3e8ef;
+    --red:#d8392f; --redbg:#fdecea; --redbd:#f3b6b1;
+    --amber:#d98a00; --amberbg:#fef4e3; --amberbd:#f3d39a;
+    --green:#2e9e5b; --greenbg:#e8f6ee; --greenbd:#b6e3c8;
+    --bg:#eef1f5; --card:#ffffff; --shadow:0 4px 18px rgba(22,36,63,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.75; font-size:15px;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{display:flex;max-width:1280px;margin:0 auto;gap:28px;padding:0 22px 80px}
+
+  /* ---------- Sidebar TOC ---------- */
+  .toc{position:sticky;top:24px;align-self:flex-start;width:230px;flex:0 0 230px;
+    background:var(--card);border-radius:14px;padding:20px 16px;box-shadow:var(--shadow);
+    max-height:calc(100vh - 48px);overflow:auto}
+  .toc h4{font-size:12px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:12px}
+  .toc a{display:block;padding:7px 10px;border-radius:8px;color:var(--muted);font-size:13.5px;
+    border-left:3px solid transparent;transition:.18s}
+  .toc a:hover{background:#f4f6fa;color:var(--ink)}
+  .toc a.active{background:#f1f5fb;color:var(--navy);border-left-color:var(--gold);font-weight:600}
+  .toc .sub{padding-left:22px;font-size:12.5px}
+
+  /* ---------- Main ---------- */
+  .main{flex:1;min-width:0}
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#243a63 100%);
+    color:#fff;border-radius:18px;padding:42px 40px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .hero::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(201,162,39,.35),transparent 70%);border-radius:50%}
+  .eyebrow{color:var(--gold-soft);font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+  .hero h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:34px;line-height:1.25;margin:12px 0 8px;font-weight:800}
+  .hero .sub{font-size:16px;color:#cdd7e6;font-weight:300}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative;z-index:1}
+  .meta .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    padding:6px 13px;border-radius:999px;font-size:12.5px;color:#e6ecf5;backdrop-filter:blur(4px)}
+  .meta .chip b{color:var(--gold-soft)}
+
+  section{background:var(--card);border-radius:16px;padding:30px 32px;margin-top:22px;box-shadow:var(--shadow)}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid var(--line)}
+  .sec-head .num{background:var(--navy);color:#fff;font-size:13px;font-weight:700;width:30px;height:30px;
+    border-radius:8px;display:flex;align-items:center;justify-content:center;flex:0 0 30px}
+  .sec-head h2{font-size:21px;font-weight:800;color:var(--navy)}
+  .sec-head .stars{margin-left:auto;color:var(--gold);font-size:13px;letter-spacing:1px}
+  h3{font-size:16.5px;color:var(--navy2);margin:24px 0 12px;font-weight:700;display:flex;align-items:center;gap:8px}
+  h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  p{margin:10px 0;color:#33414f}
+
+  .verdict{border-radius:14px;padding:22px 26px;margin:6px 0 18px;
+    background:linear-gradient(135deg,#fdecea,#fff3f1);border:1px solid var(--redbd)}
+  .verdict .tag{display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:13px;
+    padding:4px 14px;border-radius:999px;letter-spacing:.05em}
+  .verdict h3{margin:12px 0 6px;color:var(--red);font-size:18px}
+  .verdict p{color:#5a2b27;margin:6px 0}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:16px 0}
+  .card{border:1px solid var(--line);border-radius:13px;padding:18px 18px 16px;position:relative;background:#fff;
+    border-top:4px solid var(--line)}
+  .card.red{border-top-color:var(--red)}
+  .card.amber{border-top-color:var(--amber)}
+  .card.green{border-top-color:var(--green)}
+  .card .label{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:.02em}
+  .card .val{font-size:30px;font-weight:800;color:var(--navy);margin:6px 0 2px;line-height:1.1}
+  .card .val small{font-size:14px;font-weight:600;color:var(--muted)}
+  .card .note{font-size:12px;color:var(--muted);margin-top:4px}
+  .card .sev{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px}
+  .sev.red{background:var(--redbg);color:var(--red)}
+  .sev.amber{background:var(--amberbg);color:var(--amber)}
+  .sev.green{background:var(--greenbg);color:var(--green)}
+
+  .keypoints{list-style:none;counter-reset:k}
+  .keypoints li{counter-increment:k;position:relative;padding:12px 16px 12px 50px;margin:10px 0;
+    background:#f8fafc;border-left:4px solid var(--gold);border-radius:0 10px 10px 0;font-size:14.5px}
+  .keypoints li::before{content:counter(k);position:absolute;left:14px;top:12px;width:24px;height:24px;
+    background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:700}
+  .keypoints b{color:var(--navy)}
+
+  .tbl-wrap{overflow-x:auto;margin:14px 0;border-radius:12px;border:1px solid var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
+  thead th{background:var(--navy);color:#fff;text-align:left;padding:11px 14px;font-weight:600;font-size:13px;
+    white-space:nowrap}
+  tbody td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:#f8fafc}
+  tbody tr:hover{background:#f1f5fb}
+  td .em{font-weight:700;color:var(--navy)}
+  td.red{color:var(--red);font-weight:700}
+  td.amber{color:var(--amber);font-weight:700}
+  td.green{color:var(--green);font-weight:700}
+
+  .badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+  .badge.red{background:var(--redbg);color:var(--red)}
+  .badge.amber{background:var(--amberbg);color:var(--amber)}
+  .badge.green{background:var(--greenbg);color:var(--green)}
+  .badge.navy{background:#e7eefb;color:var(--navy)}
+
+  .lights{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+  .light{display:flex;align-items:center;gap:8px;background:#f8fafc;border:1px solid var(--line);
+    border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600}
+  .light .ld{width:14px;height:14px;border-radius:50%}
+  .ld.red{background:var(--red);box-shadow:0 0 0 4px var(--redbg)}
+  .ld.amber{background:var(--amber);box-shadow:0 0 0 4px var(--amberbg)}
+  .ld.green{background:var(--green);box-shadow:0 0 0 4px var(--greenbg)}
+
+  .note-box{background:#f4f7fb;border:1px solid #d8e2f0;border-left:4px solid var(--navy);
+    border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-size:14px}
+  .warn-box{background:var(--amberbg);border:1px solid var(--amberbd);border-left:4px solid var(--amber);
+    border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-size:14px}
+  .quote{background:#f8fafc;border-left:4px solid var(--gold);padding:14px 20px;margin:16px 0;
+    font-size:15px;color:var(--navy2);font-style:italic;border-radius:0 10px 10px 0}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:900px){.two-col{grid-template-columns:1fr}.toc{display:none}}
+
+  .foot{margin-top:22px;background:#fff;border-radius:16px;padding:24px 32px;box-shadow:var(--shadow);
+    font-size:12.5px;color:var(--muted);border-top:4px solid var(--gold)}
+  .foot b{color:var(--navy)}
+  .disclaimer{background:var(--redbg);border:1px solid var(--redbd);border-radius:12px;padding:16px 20px;margin-top:14px;
+    font-size:13px;color:#6b332e}
+  #toTop{position:fixed;right:26px;bottom:26px;width:46px;height:46px;border-radius:50%;background:var(--navy);
+    color:#fff;border:none;cursor:pointer;font-size:20px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.3s;z-index:50}
+  #toTop.show{opacity:1;visibility:visible}
+  @media print{
+    body{background:#fff}.toc{display:none}section,.hero,.foot{box-shadow:none;break-inside:avoid}
+    #toTop{display:none}.wrap{display:block;max-width:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- TOC -->
+  <nav class="toc">
+    <h4>目录导航</h4>
+    <a href="#s1">一、一页速览</a>
+    <a href="#s2">二、Q3 财报核心数据</a>
+    <a href="#s3">三、五大业务板块</a>
+    <a href="#s4">四、订单与 backlog</a>
+    <a href="#s5">五、经营问题与风险</a>
+    <a href="#s6">六、估值分析</a>
+    <a href="#s7">七、暴跌归因</a>
+    <a href="#s8">八、客观看待</a>
+    <a href="#s9">九、来源与免责</a>
+  </nav>
+
+  <div class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="eyebrow">股哥·投研部 · 内部研究参考</div>
+      <h1>Alphabet（GOOGL）2026Q3 财报深度分析</h1>
+      <div class="sub">业务 · 订单 · 风险 · 估值 · 暴跌归因</div>
+      <div class="meta">
+        <span class="chip">报告时间 <b>2026-10-29</b></span>
+        <span class="chip">数据截止 <b>10/28 收盘 + 10/29 盘前</b></span>
+        <span class="chip">标普 500 成分股</span>
+        <span class="chip">盘前价 <b>$288.71</b></span>
+      </div>
+    </header>
+
+    <!-- ============ 一、一页速览 ============ -->
+    <section id="s1">
+      <div class="sec-head"><div class="num">1</div><h2>一页速览（Executive Summary）</h2><div class="stars">★★★★★</div></div>
+
+      <div class="cards">
+        <div class="card green"><div class="label">总营收（同比）</div><div class="val">$127.6B <small>+24.7%</small></div><div class="note">近四年最好增速之一，仅 miss 预期 0.5%</div></div>
+        <div class="card green"><div class="label">Google Cloud（同比）</div><div class="val">+102.6%</div><div class="note">营业利润率 36.2%，唯一超预期板块</div></div>
+        <div class="card red"><div class="label">财报后股价</div><div class="val">−11%</div><div class="note">盘前 $288.71，相对 10/28 收盘 $324.89</div></div>
+      </div>
+
+      <h3><span class="dot"></span>财报好在哪（3 条）</h3>
+      <ul class="keypoints">
+        <li><b>营收 $127.577B，+24.65% YoY</b>（不变汇率亦 +25%），近四年最好增速之一。</li>
+        <li><b>Google Cloud $30.709B（+102.6%），营业利润率 36.2%（+12.5pct）</b>，五大板块唯一超预期。</li>
+        <li><b>Cloud backlog 约 $560B</b>（Q2 $514B，+8.9% QoQ）；Gemini App 用户破 10 亿；第一方 API 用量 320 亿 tokens/分钟（一年 4 倍+）。</li>
+      </ul>
+
+      <h3><span class="dot"></span>财报差在哪（3 条）</h3>
+      <ul class="keypoints">
+        <li><b>营业利润 $40.576B vs 预期 $43.19B（−6.1%）</b>，近四年首次营收+利润双 miss。</li>
+        <li><b>FCF −$9.065B</b>（预期 −$2.70B，缺口 3.4 倍），连续第二季为负。</li>
+        <li><b>Search 增速 19%→17%→12% 三连降</b>；回购 $0 + 发债 $29.0B + ATM 增发 $12.4B。</li>
+      </ul>
+
+      <div class="verdict">
+        <span class="tag">为何暴跌</span>
+        <h3>收入只 miss 0.5%，股价却跌 11%</h3>
+        <p>市场下调的不是这个季度，而是<b>「搜索还能按 15%+ 增长多久」这一终值假设</b>，以及「轻资产现金牛」这套估值公式。</p>
+      </div>
+
+      <div class="two-col">
+        <div class="note-box">
+          <b>估值判定</b><br>
+          $324.89（10/28 收盘）= <b>高估</b>（正常化 PE 30.5x / 市值÷营业利润 25.3x）；<br>
+          $288.71（10/29 盘前）= <b>合理区间上沿</b>（27.1x / 22.5x）。<br>
+          SOTP 合理区间 <b>$270–306（中值 $288）</b>。
+        </div>
+        <div class="quote">
+          <b>一句话结论：</b>公司没变差，是它主动从「轻资产印钞机」变成「AI 重资产基础设施商」；市场在为这次身份转换重新定价，不是在为这份财报定价。
+        </div>
+      </div>
+
+      <h3><span class="dot"></span>用户 7 问速答</h3>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>用户问题</th><th>一句话答案</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>主要业务板块表现</td><td>广告三块全线减速，<b>Cloud 一家独大</b>（+102.6%、利润率 36.2%）；广告合计 +10.6%</td></tr>
+          <tr><td>2</td><td>订单情况</td><td>Cloud backlog <b>约 $560B</b>（+8.9% QoQ），略超一半 24 个月内确认，单季 book-to-bill ≈ <b>2.5x</b>；客户高度集中于少数 AI 实验室</td></tr>
+          <tr><td>3</td><td>经营问题与风险</td><td><b>高</b>：Capex 失控、资本配置到极限（零回购+发债+增发）、Search 三连降；<b>中</b>：Cloud 可持续性、反垄断、SBC 稀释</td></tr>
+          <tr><td>4</td><td>主营业务情况</td><td>广告占营收 <b>64.3%</b> 是现金牛，Cloud 占 <b>24.1%</b> 是增长引擎，订阅/平台/设备占 11.2%</td></tr>
+          <tr><td>5</td><td>估值水平</td><td>表面 PE 16.96 是<b>假便宜</b>（含约 $126.76B 股权证券收益）；正常化 PE <b>27.1x（盘前）/30.5x（收盘）</b> → 合理偏贵，不是低估</td></tr>
+          <tr><td>6</td><td>为何财报后暴跌</td><td><b>五维并列</b>（见第七章），公司基本面为主因，宏观只是放大器</td></tr>
+          <tr><td>7</td><td>如何看待这家公司</td><td>生意仍优秀、基础设施护城河在扩大，但<b>资本纪律与估值公式已切换</b>；$285 附近为合理中枢，Q4 是验证窗口</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- ============ 二、Q3 核心数据 ============ -->
+    <section id="s2">
+      <div class="sec-head"><div class="num">2</div><h2>Q3 财报核心数据</h2><div class="stars">★★★★★</div></div>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>项目</th><th>2026Q3 实际</th><th>市场预期</th><th>超/低预期</th><th>2025Q3</th><th>YoY</th></tr></thead>
+        <tbody>
+          <tr><td class="em">总营收</td><td><b>$127.577B</b></td><td>$128.22B</td><td class="red"><b>−0.5%</b></td><td>$102.346B</td><td class="green"><b>+24.65%</b></td></tr>
+          <tr><td class="em">营业利润</td><td><b>$40.576B</b></td><td>$43.19B</td><td class="red"><b>−6.1%</b></td><td>$31.228B</td><td class="green"><b>+29.9%</b></td></tr>
+          <tr><td>营业利润率</td><td>31.8%</td><td>33.7%（隐含）</td><td class="red">−1.9pct</td><td>30.5%</td><td class="green">+1.3pct</td></tr>
+          <tr><td>净利润（GAAP）</td><td>$26.170B</td><td>—</td><td>—</td><td>$34.979B</td><td class="red"><b>−25.2%</b></td></tr>
+          <tr><td>稀释 EPS（GAAP）</td><td>$2.12</td><td>—</td><td>—</td><td>$2.87</td><td class="red">−26.0%</td></tr>
+          <tr><td>Adjusted EPS</td><td><b>$2.67</b></td><td>$3.02</td><td class="red"><b>−11.6%</b></td><td>—</td><td>—</td></tr>
+          <tr><td>Capex</td><td><b>$51.355B</b></td><td>$55.09B</td><td class="green">−6.8%</td><td>$23.953B</td><td class="red"><b>+114.4%</b></td></tr>
+          <tr><td>自由现金流 FCF</td><td class="red"><b>−$9.065B</b></td><td>−$2.70B</td><td class="red">缺口 3.4 倍</td><td class="green">+$24.461B</td><td class="red">转负</td></tr>
+          <tr><td>股票回购</td><td class="red"><b>$0</b></td><td>—</td><td>—</td><td>$11.504B</td><td class="red">−100%</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p style="font-size:13px;color:var(--muted)">来源：官方新闻稿 Exhibit 99.1 p1–p6；预期为 LSEG/FactSet 经 CNBC 转述。</p>
+
+      <div class="warn-box">
+        <b>关键校正：</b>GAAP 净利 −25.2% 不是经营恶化——它完全由「其他收益（费用）净额」从 <b>+$12.759B 翻转为 −$8.221B</b>（其中股权证券净损失 $9.048B）造成，单行摆动 −$20.98B。<b>判断真实经营请用营业利润：+29.9%，利润率同比 +1.3pct。</b>同理，TTM PE 16.96 也被这同一行数字污染（详见第六章）。
+      </div>
+    </section>
+
+    <!-- ============ 三、五大板块 ============ -->
+    <section id="s3">
+      <div class="sec-head"><div class="num">3</div><h2>五大业务板块逐一评述</h2><div class="stars">★★★★</div></div>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>板块</th><th>营收</th><th>YoY</th><th>占总营收</th><th>营业利润/利润率</th><th>评级</th></tr></thead>
+        <tbody>
+          <tr><td class="em">Search & other</td><td><b>$63.35B</b></td><td class="amber"><b>+12.0%</b></td><td>49.7%</td><td>— / —</td><td><span class="badge amber">🟡 减速</span> 连续两季不及预期（差 $1.6B），QoQ 仅 +0.1%</td></tr>
+          <tr><td class="em">YouTube ads</td><td>$11.21B</td><td>+9.2%</td><td>8.8%</td><td>— / —</td><td><span class="badge amber">🟡 减速</span> Q2 为 +12.9%</td></tr>
+          <tr><td class="em">Google Network</td><td>$7.46B</td><td>+1.4%</td><td>5.8%</td><td>— / —</td><td><span class="badge red">🔴 基本零增长</span></td></tr>
+          <tr><td class="em">订阅、平台与设备</td><td>$14.29B</td><td>+11.0%</td><td>11.2%</td><td>— / —</td><td><span class="badge amber">🟡 尚可</span> 亦被点名不及预期</td></tr>
+          <tr><td class="em">Google Services 合计</td><td>$96.30B</td><td>+10.6%</td><td>75.5%</td><td><b>$39.157B / 40.7%</b></td><td><span class="badge amber">🟡 广告现金牛，增速进入成熟期</span></td></tr>
+          <tr><td class="em">Google Cloud</td><td><b>$30.709B</b></td><td class="green"><b>+102.6%</b></td><td>24.1%</td><td><b>$11.121B / 36.2%</b></td><td><span class="badge green">🟢 唯一超预期</span> beat 7%，利润率 +12.5pct</td></tr>
+          <tr><td class="em">Other Bets</td><td>$0.372B</td><td>+8.1%</td><td>0.3%</td><td class="red">−$2.047B（亏损扩大 43.5%）</td><td><span class="badge red">🔴 亏损是营收 5.5 倍</span></td></tr>
+          <tr><td class="em">Alphabet 级共享 AI 研发</td><td>—</td><td>—</td><td>—</td><td class="red"><b>−$7.655B（多烧 $3.19B）</b></td><td><span class="badge red">🔴 营业利润 miss 的唯一成因</span></td></tr>
+          <tr><td class="em"><b>合计</b></td><td><b>$127.577B</b></td><td class="green"><b>+24.65%</b></td><td>100%</td><td><b>$40.576B / 31.8%</b></td><td><span class="badge amber">🟡 收入好、利润被研发与折旧吃掉</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="note-box">
+        <b>本季最被忽视的算术：</b>分部加总 39.157 + 11.121 − 2.047 − 7.655 = <b>40.576</b>（完全对平）。若共享 AI 研发亏损维持去年 −$4.467B 不变，营业利润应为 <b>$43.764B，反而超共识 $0.57B</b>。
+      </div>
+      <div class="quote">
+        <b>业务单元本身是超预期的，miss 100% 由公司级 AI 研发多烧 $3.19B 解释</b>——这是主动加注 AI 的选择，不是经营恶化；但代价真实：共识隐含 33.7% 营业利润率被打到 31.8%。
+      </div>
+      <div class="warn-box">
+        <b>会计质量提示：</b>Cloud 36.2% 的利润率是在不承担模型训练成本前提下算出的——若把同比多烧的 $3.19B 按营收权重分摊，Cloud 营业利润降至约 $7.9B、利润率约 <b>25–26%</b>。这是本季最被忽视的会计质量问题。
+      </div>
+    </section>
+
+    <!-- ============ 四、订单与 backlog ============ -->
+    <section id="s4">
+      <div class="sec-head"><div class="num">4</div><h2>订单与 backlog 专题</h2><div class="stars">★★★★</div></div>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td class="em">Cloud backlog（Q3）</td><td><b>约 $560B</b></td><td>Q2 为 $514B，<b>+8.9% QoQ（+约 $46B）</b></td></tr>
+          <tr><td class="em">确认节奏</td><td><b>略超一半 24 个月内确认</b></td><td>约 $280B 两年内入表（管理层电话会口径）</td></tr>
+          <tr><td class="em">收入覆盖倍数</td><td><b>约 18 个季度（4.6 年）</b></td><td>$560B ÷ 单季 Cloud 收入 $30.709B</td></tr>
+          <tr><td class="em">单季 book-to-bill</td><td><b>≈2.5x</b></td><td>(30.709 + 46) ÷ 30.709</td></tr>
+          <tr><td class="em">TPU 对外供货</td><td colspan="2">Oracle 10/27 起在自有云提供谷歌 TPU（<b>首次跑在别家云上</b>）；TD Cowen 模型：TPU 收入 2026H2 $9.4B、2027 $62.5B；Wells Fargo：2027 $99B</td></tr>
+          <tr><td class="em">订单质量</td><td><span class="badge amber">🟡 集中度偏高</span></td><td>backlog 依赖 Anthropic（S-1 披露营收 $163 亿、净亏 $807 亿）、OpenAI 等少数 AI 实验室；单一客户财务可持续性是隐患</td></tr>
+          <tr><td class="em">总采购承诺</td><td colspan="2">约 $924B（Cloud backlog 的 1.65 倍），单一来源，待 10-Q 交叉验证</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="quote">
+        <b>判断：</b>订单侧是本次财报<b>最强的证据链</b>——backlog 创历史新高、覆盖 4.6 年、book-to-bill 2.5x，需求没有转弱。真正的问题在<b>订单转化为现金的速度</b>：本季 Capex $51.355B 换来的是 FCF −$9.065B，市场开始按「ROI 兑现节奏」而不是「订单金额」定价。
+      </div>
+    </section>
+
+    <!-- ============ 五、风险 ============ -->
+    <section id="s5">
+      <div class="sec-head"><div class="num">5</div><h2>经营问题与风险清单</h2><div class="stars">★★★★</div></div>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>风险项</th><th>关键证据</th><th>等级</th></tr></thead>
+        <tbody>
+          <tr><td>①</td><td><b>Capex 失控式上升</b></td><td>Q3 Capex $51.355B（占营收 40.2%，+114.4%）；FY26 维持 $195–205B；FY27 明确超 $300B；YTD Capex/折旧 = 6.0x</td><td><span class="badge red">高</span></td></tr>
+          <tr><td>②</td><td><b>资本配置已到极限</b></td><td>回购 $0（去年 $11.504B）；Q3 净发债 $29.0B；长期债务 $125.102B（较 2025 年末 +169%）；ATM 增发净筹 $12.4B（剩余 $27.6B）；优先股 YTD 净筹 $19.06B</td><td><span class="badge red">高</span></td></tr>
+          <tr><td>③</td><td><b>Search 增速三连降</b></td><td>19%→17%→12%；低于预期 $1.6B；QoQ 仅 +0.1%；但查询量增速为近五年最高 → 用量↑、收入增速↓ 的剪刀差</td><td><span class="badge red">高</span></td></tr>
+          <tr><td>④</td><td><b>Cloud 可持续性</b></td><td>+102.6% 含 TPU 硬件销售；backlog QoQ +8.9% 慢于营收 +24.0%；36.2% 利润率未承担模型训练成本</td><td><span class="badge amber">中</span></td></tr>
+          <tr><td>⑤</td><td><b>反垄断</b></td><td>本季无新增大额计提；AdTech 拆分这一最大尾部风险已排除；具体金额待 10-Q</td><td><span class="badge amber">中</span></td></tr>
+          <tr><td>⑥</td><td><b>SBC 稀释无对冲</b></td><td>SBC $8.630B（占营收 6.76%，+35.5%，快于营收 +24.7%）；稀释股数 +1.3% 而回购为零</td><td><span class="badge amber">中</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="note-box">
+        <b>三个高风险是同一枚硬币的三面：</b>AI 军备竞赛（①）→ 现金不够（②）→ 只能靠高增长业务撑估值，而最赚钱的 Search 正在减速（③）。
+      </div>
+      <div class="warn-box">
+        <b>但要区分两件事：</b>净现金仍有 $123.181B，TTM EBIT $156.98B 对年化利息约 $5B 覆盖 30 倍以上 → 这是<b>股东回报被牺牲</b>（股东总回报率仅约 0.33%），<b>不是偿债危机</b>。
+      </div>
+    </section>
+
+    <!-- ============ 六、估值 ============ -->
+    <section id="s6">
+      <div class="sec-head"><div class="num">6</div><h2>估值分析：PE 16.96 是全场最大的陷阱</h2><div class="stars">★★★★★</div></div>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>口径</th><th>@$324.89（收盘）</th><th>@$288.71（盘前）</th><th>评价</th></tr></thead>
+        <tbody>
+          <tr><td class="em">PE（TTM，GAAP）</td><td><b>16.96</b></td><td>约 15.0</td><td class="red"><b>假象</b>：TTM 净利含约 $126.76B 股权证券收益，剔除后正常化 EPS 约 $10.66</td></tr>
+          <tr><td class="em">正常化 PE</td><td><b>30.5x</b></td><td><b>27.1x</b></td><td>≈MSFT，比 META 贵约 30%、比 AMZN 贵约 32%</td></tr>
+          <tr><td class="em">市值 / 营业利润</td><td><b>25.3x</b></td><td><b>22.5x</b></td><td>最干净口径；盘前已在合理区间上沿</td></tr>
+          <tr><td>市值 / FCF</td><td>201x</td><td>约 179x</td><td>无意义——Capex 已吞掉全部现金流</td></tr>
+          <tr><td>EV / EBITDA</td><td>20.8x</td><td>18.4x</td><td>中性</td></tr>
+          <tr><td>EV /（EBITDA − SBC）</td><td>25.6x</td><td>22.7x</td><td>剔除股权激励后仍指向 22–23x，交叉印证</td></tr>
+          <tr><td>同业 PE（TTM）</td><td colspan="2">MSFT 27.73 / META 20.89 / AMZN 20.47 / AAPL 39.44</td><td>谷歌表面最便宜是唯一例外项</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3><span class="dot"></span>三档目标价（基准 12.4B 稀释股，FY2027E，均为本报告测算）</h3>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>情景</th><th>核心假设</th><th>FY27E EPS</th><th>给予倍数</th><th>目标价</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge green">乐观</span></td><td>Search 回升至 14%、Cloud 利润率守 33%、Capex 不再上调</td><td>$13.3</td><td>28x</td><td><b>$370</b></td></tr>
+          <tr><td><span class="badge amber">中性</span></td><td>Search 降至 9–11%、Cloud 回落至 30%、折旧压力显形</td><td>$11.9</td><td>24x</td><td><b>$285</b></td></tr>
+          <tr><td><span class="badge red">悲观</span></td><td>Search 跌至 6–8%、Cloud 回落至 26%、FY27 Capex 超 $320B</td><td>$9.7</td><td>21x</td><td><b>$205</b></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="note-box">
+        <b>SOTP 交叉验证：</b>Services $168B×14x + Cloud $51B×25x + Waymo 期权 $50B − 共享研发 $30.6B×15x + 净现金 $123B ≈ <b>$270/股</b>（不扣研发亏损则为 $306/股）→ <b>合理区间 $270–306，中值 $288</b>。
+      </div>
+      <div class="quote">
+        <b>结论：</b>财报前 $324.89 = <b>高估</b>（无容错空间，miss 就必跌）；盘前 $288.71 = <b>合理（区间上沿）</b>，绝不是低估。给低估结论需要两个前提之一：Cloud 利润率守住 36%（概率 &lt;30%）、FY27 Capex 被下修——<b>当前都不成立</b>。
+      </div>
+    </section>
+
+    <!-- ============ 七、暴跌归因 ============ -->
+    <section id="s7">
+      <div class="sec-head"><div class="num">7</div><h2>财报后为何暴跌：五维并列归因</h2><div class="stars">★★★★★</div></div>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>维度（不同切面）</th><th>来源</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td class="em">宏观 vs 个股</td><td>卡萨丁</td><td>公司基本面 <b>~80%</b> / 宏观 <b>~20%</b>，其中宏观直接贡献仅 ~2pct（10Y 4.99%→5.05%）。<b>最强反证：同一晚发财报的 MSFT 股价上涨</b></td></tr>
+          <tr><td class="em">行业 vs 公司</td><td>索拉卡</td><td>行业性 <b>~30%</b> / 公司自身 <b>~70%</b>。云行业 +43%（八年最高）、广告大盘仍增长，行业没坏；坏的是搜索变现效率</td></tr>
+          <tr><td class="em">估值杀 vs 盈利杀</td><td>黑默丁格</td><td>机械口径 <b>100% 估值杀</b>（TTM 营业利润 +29.9%，E 未降，倍数 25.3x→22.5x）；经济口径 ~63% 估值杀 + ~37% 盈利预期杀</td></tr>
+          <tr><td class="em">资金结构</td><td>斯维因</td><td>趋势/量化资金在流动性真空中抛售（估 40–50%），<b>长线机构未出逃</b>；空头仅占流通股 0.74%；Q2 四大机构净买入 5,800 万股</td></tr>
+          <tr><td class="em">一二级定价</td><td>提莫</td><td>定价机制从叙事切到 ROI：OpenAI 自降 $150B、Anthropic 遭压价、CoreWeave 财报后均值 −17%，<b>−11% 是切换的正常幅度，不是错杀</b></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="warn-box">
+        ⚠️ <b>五个维度是五个不同切面，分母不同，绝不可相加</b>（不存在 80% 基本面 + 30% 行业 这种算法）。
+      </div>
+      <div class="quote">
+        <b>一句话：</b>不是这个季度赚少了，而是<b>未来三年的赚钱方式和现金流结构被重新定价了</b>——这是估值杀，但杀得有道理。
+      </div>
+    </section>
+
+    <!-- ============ 八、客观看待 ============ -->
+    <section id="s8">
+      <div class="sec-head"><div class="num">8</div><h2>如何客观看待这家优秀的企业</h2><div class="stars">★★★★</div></div>
+      <ul class="keypoints">
+        <li><b>护城河：基础设施层在扩大，应用变现层在收窄。</b>扩大的是 TPU（第 7 代 Ironwood + 首次对外供货 Oracle）、Gemini（10 亿用户、320 亿 tokens/分钟）、backlog $560B；收窄的是搜索广告变现率（查询量五年最高 vs 收入增速三年最低）。</li>
+        <li><b>性质：不是被颠覆，是自我蚕食 + 主动换身份。</b>它选择把现金牛变成 AI 重资产基础设施商，估值框架随之从 P/FCF 25x 切换为 EV/EBITDA 15–18x，中枢下移是结构性的，不是情绪性的。</li>
+        <li><b>适合什么样的投资者：</b>能承受 1–2 个季度负 FCF、看好 TPU/云长期兑现、且不需要现金回报的长线投资者；<b>不适合</b>依赖分红回购或短期动量交易的资金。当前价位无安全边际也无泡沫，$285 附近是合理中枢。</li>
+      </ul>
+
+      <h3><span class="dot"></span>三个验证指标（未来 1–2 季度）</h3>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>观察指标</th><th>时间窗口</th><th>阈值与含义</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Q4 Search 增速（vs 查询量增速缺口）</td><td>2027-02 财报</td><td>≥14% → 本次为一次性重定价；&lt;10% → 估值体系需重置</td></tr>
+          <tr><td>2</td><td>Q4 及 2027 FCF 是否转正</td><td>2027-02 起</td><td>转正 → Capex 叙事缓解；继续为负 → 回购/分红能力长期受压</td></tr>
+          <tr><td>3</td><td>Cloud 利润率与 backlog 环比</td><td>每季</td><td>利润率跌破 30% 或 backlog 环比失速 → 订单驱动故事失效</td></tr>
+          <tr><td>4</td><td>反垄断 remedies 具体形态</td><td>10-Q / 法院进展</td><td>涉及搜索默认分发协议 → 直接打击约 50% 营收入口（低概率、高烈度）</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- ============ 九、来源与免责 ============ -->
+    <section id="s9">
+      <div class="sec-head"><div class="num">9</div><h2>数据来源与免责声明</h2><div class="stars">★★★</div></div>
+      <ul class="keypoints">
+        <li><b>官方口径（A 级）：</b>Alphabet Q3 2026 财报新闻稿 Exhibit 99.1 p1–p6。</li>
+        <li><b>权威媒体（B 级）：</b>CNBC、Barron's/WSJ、Synergy Research、Dentsu、SEC EDGAR 13F。</li>
+        <li><b>本报告测算（C 级）：</b>正常化 PE、市值/营业利润、EV/(EBITDA−SBC)、SOTP、三档目标价、book-to-bill、收入覆盖倍数、归因比例、Cloud 利润率分摊影响、股东总回报率——均已标「本报告测算」。</li>
+        <li><b>数据无法获取（D 级）：</b>10/29 实际收盘价与成交量、期权 IV、ETF 净流入、Meta/Amazon Q3 广告数据、反垄断计提金额、回购授权余额等，未估算未编造。</li>
+      </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="foot">
+      <b>一句话总结：</b>Alphabet 2026Q3 是一份「收入大超预期、利润小幅 miss、现金流转负、股价暴跌 11%」的分裂式财报。公司基本面没变差，而是主动从「轻资产印钞机」切换为「AI 重资产基础设施商」，市场为此重新定价。估值上，财报前 $324.89 高估、盘前 $288.71 处于合理区间上沿（SOTP 中值 $288），$285 附近为合理中枢，Q4 是验证窗口。
+      <div class="disclaimer">
+        <b>免责声明：</b>本报告仅供研究参考，不构成投资建议。价格锚点为 2026-10-28 收盘与 2026-10-29 盘前，非 10/29 收盘。文中「本报告测算」项均为基于公开数据的推导，存在误差，请以官方披露为准。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<button id="toTop" title="回到顶部">↑</button>
+<script>
+  const toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',()=>{toTop.classList.toggle('show',window.scrollY>500)});
+  toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const links=[...document.querySelectorAll('.toc a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){
+      const id='#'+e.target.id;
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===id));
+    }});
+  },{rootMargin:'-30% 0px -60% 0px'});
+  secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
